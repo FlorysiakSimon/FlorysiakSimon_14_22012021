@@ -1,6 +1,16 @@
-import React from 'react'
+import React , {useState} from 'react'
 import {Link} from 'react-router-dom'
+import './CreateEmployeePage.scss'
+import DatePicker from "react-datepicker"; // react-datepicker
+import "react-datepicker/dist/react-datepicker.css"; // react-datepicker css
+
 export default function CreateEmployeePage() {
+    const [startDate, setStartDate] = useState(new Date());
+
+    const saveEmployee = () => {
+        console.log('saved')
+    }
+
     return (
         <div>
             <div className="title">
@@ -20,8 +30,7 @@ export default function CreateEmployeePage() {
                     <input id="date-of-birth" type="text" />
 
                     <label htmlFor="start-date">Start Date</label>
-                    <input id="start-date" type="text" />
-
+                    <DatePicker selected={startDate} onChange={(date) => setStartDate(date) } />
                     <fieldset className="address">
                         <legend>Address</legend>
 
@@ -48,7 +57,7 @@ export default function CreateEmployeePage() {
                     </select>
                 </form>
 
-                <button onClick="saveEmployee()">Save</button>
+                <button onClick={saveEmployee}>Save</button>
         </div>
         <div id="confirmation" className="modal">Employee Created!</div>
         </div>
