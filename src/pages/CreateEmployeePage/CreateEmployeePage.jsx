@@ -3,14 +3,16 @@ import {Link} from 'react-router-dom'
 import './CreateEmployeePage.scss'
 import DatePicker from "react-datepicker"; // react-datepicker
 import "react-datepicker/dist/react-datepicker.css"; // react-datepicker css
+import Select from 'react-select' // react-select
+import { department,states } from '../../data/data'; //react-select data
 
 export default function CreateEmployeePage() {
     const [startDate, setStartDate] = useState(new Date());
-
+    const [birthDate, setBirthDate] = useState(new Date())
     const saveEmployee = () => {
         console.log('saved')
     }
-
+    
     return (
         <div>
             <div className="title">
@@ -27,7 +29,8 @@ export default function CreateEmployeePage() {
                     <input type="text" id="last-name" />
 
                     <label htmlFor="date-of-birth">Date of Birth</label>
-                    <input id="date-of-birth" type="text" />
+                    <DatePicker selected={birthDate} showMonthDropdown showYearDropdown dropdownMode="select" onChange={(date) => setBirthDate(date) } />
+
 
                     <label htmlFor="start-date">Start Date</label>
                     <DatePicker selected={startDate} onChange={(date) => setStartDate(date) } />
@@ -41,20 +44,15 @@ export default function CreateEmployeePage() {
                         <input id="city" type="text" />
 
                         <label htmlFor="state">State</label>
-                        <select name="state" id="state"></select>
+                        <Select options={states}/>
 
                         <label htmlFor="zip-code">Zip Code</label>
                         <input id="zip-code" type="number" />
                     </fieldset>
 
                     <label htmlFor="department">Department</label>
-                    <select name="department" id="department">
-                        <option>Sales</option>
-                        <option>Marketing</option>
-                        <option>Engineering</option>
-                        <option>Human Resources</option>
-                        <option>Legal</option>
-                    </select>
+
+                    <Select options={department} />
                 </form>
 
                 <button onClick={saveEmployee}>Save</button>

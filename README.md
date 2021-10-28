@@ -12,6 +12,7 @@
 - [react-router-dom](https://reactrouter.com/web/guides/quick-start)
 - [sass](https://sass-lang.com/)
 - [react-datepicker](https://www.npmjs.com/package/react-datepicker)
+- [react-select](https://react-select.com/)
 - Recommended text editor: [Visual Studio Code](https://code.visualstudio.com/)
 
 ## Installation
