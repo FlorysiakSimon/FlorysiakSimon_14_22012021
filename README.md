@@ -11,8 +11,10 @@
 - [react](https://reactjs.org/)
 - [react-router-dom](https://reactrouter.com/web/guides/quick-start)
 - [sass](https://sass-lang.com/)
+- [r-modal-sf](https://www.npmjs.com/package/r-modal-sf)
 - [react-datepicker](https://www.npmjs.com/package/react-datepicker)
 - [react-select](https://react-select.com/)
+- [material-table](https://material-table.com/#/)
 - Recommended text editor: [Visual Studio Code](https://code.visualstudio.com/)
 
 ## Installation
