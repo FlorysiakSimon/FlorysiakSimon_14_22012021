@@ -1,4 +1,4 @@
-export const department = [
+export const departments = [
     {value:'Sales', label:'Sales'},
     {value:'Marketing', label:'Marketing'},
     {value:'Engineering', label:'Engineering'},
