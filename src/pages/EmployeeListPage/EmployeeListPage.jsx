@@ -15,15 +15,21 @@ const columns= [
 ]
 
 
-//const data=[{id:1, name: 'Mehmet', lastName: 'Baran', startDate: 1987, department: "marketing",dateOfBirth: "10/13/2021", street:"qqq", city:"ch",state:"VA",zipCode:"zz" }]
+// const data=[{id:1,
+//             name: 'Mehmet',
+//             lastName: 'Baran',
+//             startDate: 1987,
+//             department: "marketing",
+//             dateOfBirth: "10/13/2021",
+//             street:"qqq",
+//             city:"ch",
+//             state:"VA",
+//             zipCode:"2" }]
 
 /** display data in MaterialTable
- * @param  {object} {data}
+ * @param  {array} {data}
  */
 const EmployeeListPage = ({data}) => {
-
-  
-    console.log(data)
     return (
         <div id="employee-div" className="container">
             <h1>Current Employees</h1>
