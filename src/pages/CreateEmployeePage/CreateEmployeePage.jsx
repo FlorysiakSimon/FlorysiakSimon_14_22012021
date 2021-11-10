@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom';
 import DatePicker from "react-datepicker"; // react-datepicker
 import "react-datepicker/dist/react-datepicker.css"; // react-datepicker css
 import Select from 'react-select' // react-select
@@ -7,9 +6,11 @@ import { departments,states } from '../../data/data'; //react-select data
 import {Modal} from 'r-modal-sf';
 import './CreateEmployeePage.scss'
 
-
+/** Form to add an employee  
+ * @param  {object} {addEmployee}
+ */
 const CreateEmployeePage = ({addEmployee}) => {
-    const [modalOpen, setModalOpen] = useState(false)
+    //form input state
     const [startDate, setStartDate] = useState();
     const [birthDate, setBirthDate] = useState()
     const [state, setState] = useState()
@@ -22,27 +23,7 @@ const CreateEmployeePage = ({addEmployee}) => {
         zipCode:"",
     })
 
-    const saveEmployee = () => {
-        const form_result = {
-            firstName: input.firstName,
-            lastName: input.lastName,
-            street: input.street,
-            city: input.city,
-            state: state,
-            zipCode: input.zipCode,
-            department: department
-        }
-        toggleModal();
-        addEmployee(form_result)
-        
-        
-    }
-
-    const toggleModal = () => {
-        setModalOpen(!modalOpen);
-    };
-
- 
+    //handle input state change
     const handleChange = (evt) => {
         const value = evt.target.value;
         setInput({
@@ -50,24 +31,49 @@ const CreateEmployeePage = ({addEmployee}) => {
             [evt.target.name]: value
         });
     }
+    //form submit
+    const saveEmployee = (e) => {
+        e.preventDefault();
+        const form_data = {
+            id: Math.floor(Math.random() * 100),
+            firstName: input.firstName,
+            lastName: input.lastName,
+            startDate:startDate.toLocaleDateString('en-US'),
+            department: department,
+            dateOfBirth:birthDate.toLocaleDateString('en-US'),
+            street: input.street,
+            city: input.city,
+            state: state,
+            zipCode: input.zipCode
+        }
+        toggleModal();
+        addEmployee(form_data)
+    }
+
+    //modal
+    const [modalOpen, setModalOpen] = useState(false)
+
+    const toggleModal = () => {
+        setModalOpen(!modalOpen);
+    };
+
+ 
+    
+
     
     return (
         <div>
              <div className="container">
-                <div className="title">
-                    <h1>HRnet</h1>
-                </div>
-                <Link to="/list">View Current Employees</Link>
                 <h2>Create Employee</h2>
-                <form  id="create-employee-form">
+                <form  id="create-employee-form" noValidate>
 
                     <label htmlFor="first-name">First Name</label>
-                    <input type="text" name="firstName" id="first-name" value={input.firstName} onChange={handleChange} />
+                    <input required type="text" name="firstName" id="first-name" value={input.firstName} onChange={handleChange} />
 
                     <label htmlFor="last-name">Last Name</label>
-                    <input type="text" name="lastName" id="last-name" value={input.lastName} onChange={handleChange}/>
+                    <input required type="text" name="lastName" id="last-name" value={input.lastName} onChange={handleChange}/>
 
-                    <label htmlFor="date-of-birth">Date of Birth</label>
+                    <label  htmlFor="date-of-birth">Date of Birth</label>
                     <DatePicker selected={birthDate} showMonthDropdown showYearDropdown placeholderText={new Date().toLocaleDateString('en-US')} dateFormat="dd/MM/yyyy" onChange={(date) => setBirthDate(date) } />
 
                     <label htmlFor="start-date">Start Date</label>
@@ -87,10 +93,11 @@ const CreateEmployeePage = ({addEmployee}) => {
 
                     <label htmlFor="department">Department</label>
 
-                    <Select options={departments} defaultValue={departments[0]} onChange={(e) => setDepartment(e.value)} />
+                    <Select  options={departments} defaultValue={departments[0]} onChange={(e) => setDepartment(e.value)} />
+                    <button type="button" className="saveButton" onClick={saveEmployee}>Save</button>
+
                 </form>
 
-                <button type="submit" className="saveButton" onClick={saveEmployee}>Save</button>
             </div>
             <Modal content="Employee created!" modalOpen={modalOpen} modalClose={toggleModal} />
         </div>
