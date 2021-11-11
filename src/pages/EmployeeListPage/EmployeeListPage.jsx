@@ -27,13 +27,13 @@ const columns= [
 //             zipCode:"2" }]
 
 /** display data in MaterialTable
- * @param  {array} {data}
+ * @param  {object} {data}
  */
 const EmployeeListPage = ({data}) => {
     return (
         <div id="employee-div" className="container">
             <h1>Current Employees</h1>
-            <div style={{ width:"1280px", marginBottom:"2em" }}>
+            <div className="table">
                 <MaterialTable columns={columns} data={data} title=""/>
             </div>
         </div>

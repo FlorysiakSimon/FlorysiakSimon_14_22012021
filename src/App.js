@@ -5,7 +5,8 @@ import CreateEmployeePage from "./pages/CreateEmployeePage/CreateEmployeePage";
 import Header from "./components/Header/Header";
 
 export default function App() {
-  //data
+  
+  //employee state
   const [dataEmployees, setDataEmployees] = useState([])
   const addEmployee = (newEmployee) => {
     setDataEmployees([...dataEmployees, { ...newEmployee }]);

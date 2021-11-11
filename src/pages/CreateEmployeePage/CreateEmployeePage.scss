@@ -1,3 +1,11 @@
+body {
+  background-color: #f1f3fb;
+}
+
+form {
+  width: 40%;
+}
+
 .title {
   display: flex;
   align-items: center;
@@ -9,43 +17,106 @@
   position: relative;
   flex-direction: column;
   align-items: center;
-
+  box-shadow: 0 10px 20px 0 rgba(#999, 0.25);
   max-width: 1440px;
+  background-color: white;
   height: 100%;
   width: 100%;
   margin: 0 auto 5em auto;
 }
 
-label {
-  display: block;
-  margin-top: 1rem;
-  margin-bottom: 2px;
-  text-align: left;
+// FORM //
+.input {
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+  padding-top: 1.5rem;
+  & + .input {
+    margin-top: 1rem;
+  }
 }
 
-.address {
-  margin-top: 10px;
+.input-label {
+  color: black;
+  margin-bottom: 5px;
+}
+
+.input-field {
+  border: 0;
+  z-index: 0;
   width: 100%;
-}
-
-input {
-  margin-bottom: 2px;
-  border: 1px solid grey;
-  border-radius: 3px;
-  padding: 7px;
-  width: 90%;
+  background-color: transparent;
+  border-bottom: 2px solid #eee;
+  font: inherit;
+  font-size: 1.125rem;
+  padding: 0.25rem 0;
+  &:focus,
+  &:valid {
+    outline: 0;
+    border-bottom-color: #93ad18;
+    // & + .input-label {
+    //   color: #93ad18;
+    // }
+  }
 }
 
 .saveButton {
   background-color: #93ad18;
-  border: none;
+  border: 2px solid white;
+  border-radius: 10px;
   color: white;
-  padding: 15px 32px;
+  padding: 15px 102px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  font-weight: 600;
-  margin: 1em auto;
+  font-size: 18px;
+  margin: 2em auto;
+  letter-spacing: 0.2rem;
   display: block;
+  &:hover {
+    color: #93ad18;
+    border-color: #93ad18;
+    background-color: white;
+  }
+}
+
+// MODAL CLOSE BTN//
+.close-container {
+  position: relative;
+  margin: auto;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.leftright {
+  height: 4px;
+  width: 20px;
+  position: absolute;
+  background-color: black;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all 0.3s ease-in;
+}
+
+.rightleft {
+  height: 4px;
+  width: 20px;
+  position: absolute;
+  background-color: black;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all 0.3s ease-in;
+}
+
+.close-container:hover .leftright {
+  transform: rotate(-45deg);
+  background-color: #93ad18;
+}
+.close-container:hover .rightleft {
+  transform: rotate(45deg);
+  background-color: #93ad18;
+}
+.close-container:hover label {
+  opacity: 1;
 }
