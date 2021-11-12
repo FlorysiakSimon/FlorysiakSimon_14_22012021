@@ -10,6 +10,10 @@ export const selectStyle = {
         marginTop: '7px',
         marginBottom:'7px',
     }),
+    placeholder: (provided) => ({
+        ...provided,
+        color:'black',
+    }),
     control: (provided) => ({
         ...provided,
         border: '1px solid grey',

@@ -6,15 +6,16 @@ import { departments,states } from '../../data/data'; //react-select data
 import {Modal} from 'r-modal-sf';
 import './CreateEmployeePage.scss'
 import { customClose, selectStyle } from '../../data/customStyle';
+
 /** Form to add an employee  
  * @param  {object} {addEmployee}
  */
 const CreateEmployeePage = ({addEmployee}) => {
     //form input state
-    const [startDate, setStartDate] = useState();
-    const [birthDate, setBirthDate] = useState()
-    const [state, setState] = useState()
-    const [department,setDepartment] = useState()
+    const [startDate, setStartDate] = useState(String);
+    const [birthDate, setBirthDate] = useState(String)
+    const [state, setState] = useState(states[0].value)
+    const [department,setDepartment] = useState(departments[0].value)
     const [input, setInput] = useState({
         firstName: "",
         lastName: "",
@@ -31,9 +32,69 @@ const CreateEmployeePage = ({addEmployee}) => {
             [evt.target.name]: value
         });
     }
-    //form submit
-    const saveEmployee = (e) => {
+
+    const formValidate = (e) => {
         e.preventDefault();
+        if(input.firstName.length < 2 ||!input.firstName.match(/^([a-zA-Z]+)$/) ){
+            document.getElementById('first-name').focus() 
+            document.getElementById('first-name').classList.add('error')
+            return false
+        }else{
+            document.getElementById('first-name').classList.remove('error') 
+        }
+
+        if(input.lastName.length < 2 || !input.lastName.match(/^([a-zA-Z]+)$/)){
+            document.getElementById('last-name').focus()
+            document.getElementById('last-name').classList.add('error')
+            return false
+        }else{
+            document.getElementById('last-name').classList.remove('error')
+        }
+
+        if(birthDate.length < 2){
+            document.getElementById('birth-date').focus()
+            document.getElementById('birth-date').classList.add('error')
+            return false
+        }else{
+            document.getElementById('birth-date').classList.remove('error')
+        }
+        
+        if(startDate.length < 2){
+            document.getElementById('start-date').focus()
+            document.getElementById('start-date').classList.add('error')
+            return false
+        }else{
+            document.getElementById('start-date').classList.remove('error')
+        }
+
+        if(input.street.length < 2 || !input.street.match(/^([a-zA-Z]+)$/)){
+            document.getElementById('street').focus()
+            document.getElementById('street').classList.add('error')
+            return false
+        }else{
+            document.getElementById('street').classList.remove('error')
+        }
+
+        if(input.city.length < 2 || !input.street.match(/^([a-zA-Z]+)$/)){
+            document.getElementById('city').focus()
+            document.getElementById('city').classList.add('error')
+            return false
+        }else{
+            document.getElementById('city').classList.remove('error')
+        }
+
+        if(input.zipCode.length < 2 || !input.zipCode.match(/^[0-9]+$/)){
+            document.getElementById('zip-code').focus()
+            document.getElementById('zip-code').classList.add('error')
+            return false
+        }else{
+            document.getElementById('zip-code').classList.remove('error')
+        }
+        
+        saveEmployee();
+    }
+    //form submit
+    const saveEmployee = () => {
         const form_data = {
             id: Math.floor(Math.random() * 100),
             firstName: input.firstName,
@@ -59,11 +120,10 @@ const CreateEmployeePage = ({addEmployee}) => {
     
     return (
         <div>
-        
+             <h2 className="title">Create Employee</h2>
              <div className="container">
-             <h2>Create Employee</h2>
-                <form  id="create-employee-form" >
-                    <div>
+             
+                <form noValidate={true} id="create-employee-form" >
                     <div className="input">
                         <input required className="input-field" type="text" name="firstName" id="first-name" value={input.firstName} onChange={handleChange} />
                         <label className="input-label" htmlFor="first-name">First Name</label>
@@ -75,17 +135,15 @@ const CreateEmployeePage = ({addEmployee}) => {
                     </div>
 
                     <div className="input">
-                        <DatePicker required className="input-field"  selected={birthDate} showYearDropdown  dateFormat="dd/MM/yyyy" onChange={(date) => setBirthDate(date) } />
+                        <DatePicker required className="input-field"  id="birth-date"  selected={birthDate} showYearDropdown  dateFormat="dd/MM/yyyy" onChange={(date) => setBirthDate(date) } />
                         <label className="input-label" type="text" htmlFor="Date of Birth">Date of Birth</label>
                     </div>
 
                     <div className="input">
-                        <DatePicker required className="input-field"  selected={startDate} dateFormat="dd/MM/yyyy"  onChange={(date) => setStartDate(date) } />
+                        <DatePicker required className="input-field" id="start-date" selected={startDate} dateFormat="dd/MM/yyyy"  onChange={(date) => setStartDate(date) } />
                         <label className="input-label" type="text" htmlFor="Start Date">Start Date</label>
                     </div>    
-                    </div>
 
-                    <div>
                     <div className="input">
                         <input className="input-field" required type="text" name="street" id="street" value={input.street} onChange={handleChange} />
                         <label className="input-label" htmlFor="street">Street</label>
@@ -94,12 +152,12 @@ const CreateEmployeePage = ({addEmployee}) => {
                     <div className="input">
                         <input className="input-field" required type="text" name="city" id="city" value={input.city} onChange={handleChange} />
                         <label className="input-label" htmlFor="city">City</label>
+                        
                     </div>
 
                     <div className="input">
-                        <Select styles={selectStyle} required options={states} defaultValue={states[0]} onChange={(e) => setState(e.value)}/>
+                        <Select styles={selectStyle} id="state" required options={states} placeholder={states[0].label} onChange={(e) => setState(e.value)}/>
                         <label className="input-label" type="text" htmlFor="state">State</label>
-
                     </div>
 
                     <div className="input">
@@ -108,14 +166,12 @@ const CreateEmployeePage = ({addEmployee}) => {
                     </div>
 
                     <div className="input"> 
-                        <Select styles={selectStyle} options={departments} defaultValue={departments[0]} onChange={(e) => setDepartment(e.value)} />
+                        <Select styles={selectStyle} options={departments} placeholder={departments[0].label} onChange={(e) => setDepartment(e.value)} />
                         <label required className="input-label" htmlFor="department">Department</label>
                     </div>
 
-                    <button type="button" className="saveButton" onClick={saveEmployee}>Save</button>
-                    </div>
+                    <button type="submit" className="saveButton" onClick={formValidate}>Save</button>
                 </form>
-
             </div>
             <Modal style={customClose} content="Employee created!" modalOpen={modalOpen} modalClose={toggleModal}
             buttonContent={<div className="close-container">
