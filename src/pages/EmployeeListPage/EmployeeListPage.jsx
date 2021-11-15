@@ -14,27 +14,15 @@ const columns= [
         { title: 'Zip Code', field: 'zipCode' },
 ]
 
-
-// const data=[{id:1,
-//             name: 'Mehmet',
-//             lastName: 'Baran',
-//             startDate: 1987,
-//             department: "marketing",
-//             dateOfBirth: "10/13/2021",
-//             street:"qqq",
-//             city:"ch",
-//             state:"VA",
-//             zipCode:"2" }]
-
 /** display data in MaterialTable
  * @param  {object} {data}
  */
 const EmployeeListPage = ({data}) => {
     return (
         <div id="employee-div" className="container">
-            <h1>Current Employees</h1>
+            <h2>Current Employees</h2>
             <div className="table">
-                <MaterialTable columns={columns} data={data} title=""/>
+                <MaterialTable columns={columns} data={data} title={false}/>
             </div>
         </div>
     )

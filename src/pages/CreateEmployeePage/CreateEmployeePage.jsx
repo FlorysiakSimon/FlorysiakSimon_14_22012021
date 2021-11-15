@@ -125,52 +125,51 @@ const CreateEmployeePage = ({addEmployee}) => {
              
                 <form noValidate={true} id="create-employee-form" >
                     <div className="input">
-                        <input required className="input-field" type="text" name="firstName" id="first-name" value={input.firstName} onChange={handleChange} />
                         <label className="input-label" htmlFor="first-name">First Name</label>
+                        <input required className="input-field" type="text" name="firstName" id="first-name" value={input.firstName} onChange={handleChange} />
                     </div>
 
                     <div className="input">
-                        <input className="input-field" required type="text" name="lastName" id="last-name" value={input.lastName} onChange={handleChange}/>
                         <label className="input-label" htmlFor="last-name">Last Name</label>
+                        <input className="input-field" required type="text" name="lastName" id="last-name" value={input.lastName} onChange={handleChange}/>
                     </div>
 
                     <div className="input">
+                        <label htmlFor="birth-date" className="input-label" type="text" >Date of Birth</label>
                         <DatePicker required className="input-field"  id="birth-date"  selected={birthDate} showYearDropdown  dateFormat="dd/MM/yyyy" onChange={(date) => setBirthDate(date) } />
-                        <label className="input-label" type="text" htmlFor="Date of Birth">Date of Birth</label>
                     </div>
 
                     <div className="input">
-                        <DatePicker required className="input-field" id="start-date" selected={startDate} dateFormat="dd/MM/yyyy"  onChange={(date) => setStartDate(date) } />
-                        <label className="input-label" type="text" htmlFor="Start Date">Start Date</label>
+                        <label htmlFor="start-date" className="input-label" type="text" >Start Date</label>
+                        <DatePicker  required className="input-field" id="start-date" selected={startDate} dateFormat="dd/MM/yyyy"  onChange={(date) => setStartDate(date) } />
                     </div>    
 
                     <div className="input">
-                        <input className="input-field" required type="text" name="street" id="street" value={input.street} onChange={handleChange} />
                         <label className="input-label" htmlFor="street">Street</label>
+                        <input className="input-field" required type="text" name="street" id="street" value={input.street} onChange={handleChange} />
                     </div>
 
                     <div className="input">
-                        <input className="input-field" required type="text" name="city" id="city" value={input.city} onChange={handleChange} />
                         <label className="input-label" htmlFor="city">City</label>
-                        
+                        <input className="input-field" required type="text" name="city" id="city" value={input.city} onChange={handleChange} />
                     </div>
 
                     <div className="input">
-                        <Select styles={selectStyle} id="state" required options={states} placeholder={states[0].label} onChange={(e) => setState(e.value)}/>
                         <label className="input-label" type="text" htmlFor="state">State</label>
+                        <Select aria-label="state" styles={selectStyle} id="state" required options={states} placeholder={states[0].label} onChange={(e) => setState(e.value)}/>
                     </div>
 
                     <div className="input">
-                        <input className="input-field" required type="number" name="zipCode" id="zip-code" value={input.zipCode} onChange={handleChange}/>
                         <label className="input-label" htmlFor="zip-code">Zip Code</label>
+                        <input className="input-field" required type="number" name="zipCode" id="zip-code" value={input.zipCode} onChange={handleChange}/>
                     </div>
 
                     <div className="input"> 
-                        <Select styles={selectStyle} options={departments} placeholder={departments[0].label} onChange={(e) => setDepartment(e.value)} />
                         <label required className="input-label" htmlFor="department">Department</label>
+                        <Select aria-label="department" styles={selectStyle} options={departments} placeholder={departments[0].label} onChange={(e) => setDepartment(e.value)} />
                     </div>
-
-                    <button type="submit" className="saveButton" onClick={formValidate}>Save</button>
+                    
+                    <button type="submit" className="btn" onClick={formValidate}>Save</button>
                 </form>
             </div>
             <Modal style={customClose} content="Employee created!" modalOpen={modalOpen} modalClose={toggleModal}

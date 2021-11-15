@@ -31,10 +31,10 @@ form {
   margin: 0 auto 5em auto;
 }
 
-// FORM //
+/* FORM */
 .input {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   position: relative;
   padding-top: 1.5rem;
   & + .input {
@@ -60,36 +60,36 @@ form {
   &:valid {
     outline: 0;
     border-bottom-color: #93ad18;
-    // & + .input-label {
-    //   color: #93ad18;
-    // }
+    will-change: auto;
   }
 }
 .error {
   border-bottom-color: red !important;
 }
-.saveButton {
-  background-color: #93ad18;
-  border: 2px solid white;
-  border-radius: 10px;
-  color: white;
-  padding: 15px 102px;
-  text-align: center;
+/* SAVE BUTTOn */
+.btn {
+  border-radius: 3px;
+  font-size: 16px;
   text-decoration: none;
-  display: inline-block;
-  font-size: 18px;
-  margin: 2em auto;
-  letter-spacing: 0.2rem;
-  display: block;
   cursor: pointer;
-  &:hover {
-    color: #93ad18;
-    border-color: #93ad18;
-    background-color: white;
-  }
+  display: block;
+  margin: 2em auto 4em;
+  width: 100%;
+  background-color: white;
+  padding: 16px;
+  border: 1px solid #fcfcfc;
+  border-color: green;
+  color: green;
+  z-index: 20;
+  transition: all 0.35s cubic-bezier(1, 0, 0, 1);
 }
 
-// MODAL CLOSE BTN//
+.btn:hover {
+  color: #fcfcfc;
+  background-color: green;
+}
+
+/* MODAL CLOSE BTN */
 .close-container {
   position: relative;
   margin: auto;
@@ -120,11 +120,11 @@ form {
 
 .close-container:hover .leftright {
   transform: rotate(-45deg);
-  background-color: #93ad18;
+  background-color: green;
 }
 .close-container:hover .rightleft {
   transform: rotate(45deg);
-  background-color: #93ad18;
+  background-color: green;
 }
 .close-container:hover label {
   opacity: 1;
