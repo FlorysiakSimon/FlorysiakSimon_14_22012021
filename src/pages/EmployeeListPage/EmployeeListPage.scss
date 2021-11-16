@@ -4,5 +4,16 @@
 
 .table {
   margin-bottom: 5em;
-  width: 80%;
+  width: 87%;
+}
+
+.MuiPaper-elevation2 {
+  box-shadow: none !important;
+}
+.MuiIconButton-root.Mui-disabled {
+  color: #202023 !important;
+}
+
+.MuiInput-underline:after {
+  border-bottom: 2px solid wheat !important;
 }

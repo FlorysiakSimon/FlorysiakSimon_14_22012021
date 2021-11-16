@@ -20,7 +20,8 @@ export const selectStyle = {
         borderRadius: '3px',
         boxShadow: 'none',
         '&:hover': {
-            border: '1px solid #93ad18',
+            border: '1px solid #202023',
+            cursor:'pointer'
         },
     }),
 };

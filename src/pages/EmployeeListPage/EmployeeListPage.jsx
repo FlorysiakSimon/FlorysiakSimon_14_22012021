@@ -22,7 +22,19 @@ const EmployeeListPage = ({data}) => {
         <div id="employee-div" className="container">
             <h2>Current Employees</h2>
             <div className="table">
-                <MaterialTable columns={columns} data={data} title={false}/>
+                <MaterialTable 
+                columns={columns} 
+                data={data} 
+                title=""
+                options={{
+                headerStyle: {
+                    backgroundColor: '#202023',
+                    color: 'white'
+                },
+                
+                }}
+                />
+                
             </div>
         </div>
     )

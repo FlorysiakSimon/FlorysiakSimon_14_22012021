@@ -4,12 +4,13 @@
   max-width: 1440px;
   padding: 0 0px;
   margin: auto;
-  background-color: white;
+  background-color: #202023;
+
   a {
     text-decoration: none;
   }
   h1 {
-    color: green;
+    color: white;
     padding: 0px 20px;
   }
   nav {
@@ -17,17 +18,32 @@
     align-items: center;
     justify-content: space-between;
     a {
-      display: flex;
-      justify-content: space-around;
-      color: green;
+      position: relative;
       font-size: 20px;
-      padding: 0px 20px;
       margin-left: 1em;
+      margin-right: 1em;
+      color: white;
       text-decoration: none;
       font-weight: 500;
       line-height: 34px;
-      &:hover {
-        text-decoration: underline;
+    }
+
+    a::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background-color: wheat;
+      transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      a:hover::before {
+        left: 0;
+        right: auto;
+        width: 100%;
       }
     }
   }
@@ -36,6 +52,10 @@
 @media screen and (max-width: 768px) {
   .header {
     padding: 0px;
+    align-items: center;
+    h1 {
+      font-size: 20px;
+    }
     nav {
       a {
         font-size: 12px;
