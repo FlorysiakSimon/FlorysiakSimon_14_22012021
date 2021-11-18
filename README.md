@@ -1,6 +1,6 @@
 # HRnet
 
-![Lien](https://user.oc-static.com/upload/2020/08/14/15974125765772_image2.jpg)
+![Lien](https://i.gyazo.com/edb074c1fc09b751eab5b0d4632b20f8.png)
 
 ## Prerequisites
 
