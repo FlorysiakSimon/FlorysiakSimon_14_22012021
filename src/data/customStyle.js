@@ -29,8 +29,8 @@ export const selectStyle = {
 export const customClose = { 
     close:{
         position: 'absolute',
-        top: '0px',
-        right: '-10px',
+        top: '8px',
+        right: '-13px',
         border:'none',
         background: 'transparent',
     }

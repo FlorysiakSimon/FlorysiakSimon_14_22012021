@@ -5,13 +5,13 @@
   padding: 0 0px;
   margin: auto;
   background-color: #202023;
-
   a {
     text-decoration: none;
   }
   h1 {
     color: white;
     padding: 0px 20px;
+    font-family: "M PLUS Rounded 1c";
   }
   nav {
     display: flex;
@@ -24,7 +24,7 @@
       margin-right: 1em;
       color: white;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: bold;
       line-height: 34px;
     }
 
